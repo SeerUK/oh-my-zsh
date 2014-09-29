@@ -41,6 +41,9 @@ if [[ "${terminfo[kend]}" != "" ]]; then
   bindkey "${terminfo[kend]}"  end-of-line            # [End] - Go to end of line
 fi
 
+bindkey '^[[1~' beginning-of-line
+bindkey '^[[4~' end-of-line
+
 bindkey ' ' magic-space                               # [Space] - do history expansion
 
 bindkey '^[[1;5C' forward-word                        # [Ctrl-RightArrow] - move forward one word
