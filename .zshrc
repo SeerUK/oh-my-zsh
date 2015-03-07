@@ -1,15 +1,14 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
-# NVM
-source $HOME/.nvm/nvm.sh
-
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME="seer"
 DEFAULT_USER="seer"
+
+SCALA_HOME=/opt/scala
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -47,14 +46,36 @@ DEFAULT_USER="seer"
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
+source $HOME/git/vendor/zsh-users@github.com/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Customize to your needs...
-export PATH=$PATH:/home/seer/.composer/vendor/bin:/home/seer/opt/arcanist/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/seer/sdks/android-sdk-linux/platform-tools:/home/seer/sdks/android-sdk-linux/tools
+export PATH=$PATH:/Users/seer/.composer/vendor/bin:/Users/seer/opt/arcanist/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/seer/sdks/android-sdk-linux/platform-tools:/User/seer/sdks/android-sdk-linux/tools:/usr/local/share/python:$SCALA_HOME/bin
 
 setopt no_share_history
 
-alias ll='ls -lahv --group-directories-first --color'
-
 export MYSQL_PS1="\u@\h [\d]> "
 export TERM="xterm-256color"
-export JAVA_HOME=/usr
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export DOCKER_HOST=tcp://192.168.200.2:2375
+
+if [[ `uname` == "Darwin"; ]] then
+	alias ls="gls"
+fi
+
+alias ll="ls -lhv --group-directories-first --color"
+alias vim="mvim -v"
+
+# Git Aliases
+alias gs="git status"
+alias gco="git checkout"
+alias gu="git up"
+alias gp="git push"
+alias grba="git rebase --abort"
+alias grbc="git rebase --continue"
+alias gf="git fetch"
+alias gcl="git clone"
+alias gm="git merge"
+alias ga="git add"
+
+alias projtd="cd /Users/seer/git/projects/byng_systems@bitbucket.org/td-trading-app && tmux"
